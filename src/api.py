@@ -122,7 +122,13 @@ def batch_predict():
 
 
 if __name__ == '__main__':
+    import os
+
     # Carica il modello all'avvio
     load_model()
-    # Avvia l'app Flask
-    app.run(debug=True, host='0.0.0.0', port=5000)
+
+    # Usa la porta fornita da Render (oppure 5000 in locale)
+    port = int(os.environ.get('PORT', 5000))
+
+    # Avvia l'app Flask in modalità produzione base
+    app.run(host='0.0.0.0', port=port)
