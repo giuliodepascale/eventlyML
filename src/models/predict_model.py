@@ -9,7 +9,7 @@ import os
 
 def load_model_pickle():
     """Carica il modello salvato con pickle"""
-    model_path = Path('models') / 'linear_regression_model.pkl'
+    model_path = Path('model-linear-regression') / 'linear_regression_model.pkl'
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
     return model
@@ -17,7 +17,7 @@ def load_model_pickle():
 
 def load_model_joblib():
     """Carica il modello salvato con joblib"""
-    model_path = Path('models') / 'linear_regression_model.joblib'
+    model_path = Path('model-linear-regression') / 'linear_regression_model.joblib'
     model = joblib.load(model_path)
     return model
 

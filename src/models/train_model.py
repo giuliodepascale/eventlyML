@@ -55,7 +55,7 @@ with mlflow.start_run(run_name="LinearRegression-user-event"):
     
     # Salva il modello localmente
     # Crea la directory 'models' se non esiste
-    models_dir = Path('models')
+    models_dir = Path('model-linear-regression')
     models_dir.mkdir(exist_ok=True)
     
     # Salva il modello usando pickle
