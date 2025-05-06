@@ -2,3 +2,10 @@
 dvc==2.26.2
 pre-commit==2.20.0
 great_expectations==0.15.23
+
+#per Flask API
+flask
+pandas
+numpy
+scikit-learn
+joblib
