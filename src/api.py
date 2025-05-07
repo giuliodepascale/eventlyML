@@ -4,6 +4,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["https://evently-se-4-ai.vercel.app", "http://localhost:3000"]}}, supports_credentials=True)
 
+model = None
+
 def load_model():
     """Carica il modello prima della prima richiesta"""
     global model
@@ -27,7 +29,7 @@ def health_check():
     else:
         return jsonify({"status": "error", "message": "Modello non caricato"}), 500
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','OPTIONS'])
 def predict():
     """Endpoint per fare predizioni"""
     # Verifica che il modello sia caricato
@@ -66,7 +68,7 @@ def predict():
     except Exception as e:
         return jsonify({"error": f"Errore durante la predizione: {str(e)}"}), 500
 
-@app.route('/batch-predict', methods=['POST'])
+@app.route('/batch-predict', methods=['POST', 'OPTIONS'])
 def batch_predict():
     """Endpoint per fare predizioni su un batch di dati"""
     # Verifica che il modello sia caricato
