@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Abilita CORS per tutte le route
+CORS(app, resources={r"/*": {"origins": ["https://evently-se-4-ai.vercel.app", "http://localhost:3000"]}}, supports_credentials=True)
 
 def load_model():
     """Carica il modello prima della prima richiesta"""
