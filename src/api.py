@@ -14,7 +14,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": [
     "https://evently-se-4-ai.vercel.app",
     "http://localhost:3000"
-]}}, supports_credentials=True)
+]}})
 
 # Carica il modello
 def load_model():
