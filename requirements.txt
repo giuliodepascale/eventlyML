@@ -5,6 +5,7 @@ great_expectations==0.15.23
 
 #per Flask API
 flask
+flask_cors
 pandas
 numpy
 scikit-learn
