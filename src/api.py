@@ -10,7 +10,7 @@ model = None
 # Inizializza l'app Flask
 app = Flask(__name__)
 
-# Abilita CORS per i domini frontend
+# CORS abilitato senza credenziali
 CORS(app, resources={r"/*": {"origins": [
     "https://evently-se-4-ai.vercel.app",
     "http://localhost:3000"
@@ -50,6 +50,9 @@ def health_check():
 # Singola predizione
 @app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
+    if request.method == 'OPTIONS':
+        return '', 204  # Preflight OK
+
     global model
     if model is None:
         try:
@@ -77,6 +80,9 @@ def predict():
 # Batch predizioni
 @app.route('/batch-predict', methods=['POST', 'OPTIONS'])
 def batch_predict():
+    if request.method == 'OPTIONS':
+        return '', 204  # Preflight OK
+
     global model
     if model is None:
         try:
