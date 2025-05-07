@@ -7,6 +7,5 @@ great_expectations==0.15.23
 flask
 flask_cors
 pandas
-numpy
 scikit-learn
 joblib
