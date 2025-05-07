@@ -1,15 +1,8 @@
-import os
-import pandas as pd
-import numpy as np
-from pathlib import Path
-from flask import Flask, request, jsonify
-from src.models.predict_model import load_model_pickle, load_model_joblib
+from flask import Flask
+from flask_cors import CORS
 
-# Inizializza l'app Flask
 app = Flask(__name__)
-
-# Carica il modello all'avvio dell'applicazione
-model = None
+CORS(app)  # Abilita CORS per tutte le route
 
 def load_model():
     """Carica il modello prima della prima richiesta"""
