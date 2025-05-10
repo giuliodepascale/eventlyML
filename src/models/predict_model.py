@@ -1,11 +1,9 @@
-import mlflow
 import pandas as pd
 import numpy as np
 import pickle
 import joblib
 from pathlib import Path
 from sklearn.metrics import mean_squared_error, r2_score
-import os
 
 
 def load_model_pickle():
@@ -62,12 +60,6 @@ def predict_and_save(input_data_path=None, output_path=None, evaluate=False):
     metrics = None
     if evaluate and 'score' in df.columns:
         metrics = evaluate_predictions(df['score'], predictions)
-    
-    # Avvia un run di MLflow per registrare le metriche
-    with mlflow.start_run(run_name="Evaluate-model"):
-        if metrics is not None:
-            mlflow.log_metric("mse", metrics['mse'])
-            mlflow.log_metric("r2", metrics['r2'])
     
     # Se non è specificato un percorso di output, usa il percorso predefinito
     if output_path is None:
